@@ -1,0 +1,579 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input, textarea, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.5s; }
+
+* {
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif; }
+
+button {
+  cursor: pointer; }
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem; }
+
+html {
+  font-size: 16px;
+  font-family: 'Helvetica Neue', sans-serif; }
+
+img {
+  max-width: 100%; }
+
+input {
+  font-size: 1em;
+  padding: 0; }
+  input:focus {
+    outline: none; }
+
+nav, .nav {
+  background-color: #0B0C10; }
+  nav__container, .nav__container {
+    display: flex;
+    justify-content: flex-end; }
+  nav a, .nav a {
+    padding: 20px;
+    color: white; }
+
+p {
+  font-weight: 300;
+  line-height: 1.2; }
+  p + p {
+    margin-top: 20px; }
+
+.textarea {
+  resize: none; }
+
+.absolute-centered-element, .form__field--has-resizing-placeholder .form__field-label, .form__field-element-icon {
+  position: absolute; }
+  .absolute-centered-element--is-centered-vertically, .form__field--has-resizing-placeholder .form__field-label, .form__field-element-icon {
+    top: 50%;
+    transform: translateY(-50%); }
+  .absolute-centered-element--is-centered-horizontally {
+    left: 50%;
+    transform: translateX(-50%); }
+
+.container {
+  max-width: 600px;
+  margin: auto; }
+
+.flex {
+  display: flex; }
+  .flex--align-items-center {
+    align-items: center; }
+  .flex--justify-content-center {
+    justify-content: center; }
+  .flex--justify-content-start {
+    justify-content: flex-start; }
+  .flex--justify-content-end {
+    justify-content: flex-end; }
+
+.section {
+  padding: 3rem 0; }
+
+.submit-btn {
+  margin-top: 2rem; }
+
+.btn {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  border: solid black 2px;
+  padding: 1em;
+  background-color: white;
+  color: black;
+  transition: all 300ms; }
+  .btn:hover {
+    background-color: black;
+    color: white; }
+
+.dimmer {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 1rem;
+  z-index: 10;
+  transition: visibility 0.5s, opacity 0.5s; }
+  .dimmer.is-visible {
+    visibility: visible;
+    opacity: 1; }
+  .dimmer__content {
+    z-index: 15; }
+
+/*
+
+    <div class="dropdown js-dropdown">
+     <a class="dropdown__btn js-dropdown-btn" href="javascript:void(0)">Dropdown name<i class="dropdown__caret fa fa-caret-down" aria-hidden="true"></i></a>
+         <ul class="dropdown__list js-dropdown-list">
+             <li class="dropdown__list-item">
+                <a href="#">Option name</a>
+             </li>
+             <li class="dropdown__list-item">
+                <a href="#">Option name</a>
+             </li>
+         </ul>
+     </div>
+
+*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+  font-size: 1rem; }
+  .dropdown__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 10em;
+    border: solid 1px #dedede;
+    padding: 0.75em;
+    background-color: #dedede;
+    text-decoration: none;
+    color: black; }
+    .dropdown__btn:after {
+      content: '\f0d7';
+      font-family: FontAwesome, sans-serif; }
+  .dropdown__list {
+    position: absolute;
+    display: none;
+    width: 100%;
+    border: solid 1px #dedede;
+    border-top: none; }
+    .dropdown--has-pos-static-list .dropdown__list {
+      position: static; }
+  .dropdown__list-item {
+    background-color: white; }
+    .dropdown__list-item + .dropdown__list-item {
+      border-top: solid 1px #dedede; }
+    .dropdown__list-item > * {
+      display: block;
+      padding: 1em;
+      cursor: pointer; }
+  .dropdown__list-item-link {
+    display: block;
+    padding: 0.75em;
+    background-color: white;
+    text-decoration: none;
+    color: black; }
+
+/*
+    <form class="form">
+        <div class="grid">
+            <div class="grid__col-xs-12 grid__col-sm-6">
+                <div class="form__field js-form-field">
+                    <label class="form__field-label js-form-label">Field 1</label>
+                    <div class="form__field-element-container">
+                        <input class="form__field-element js-form-input"/>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__col-xs-12 grid__col-sm-6">
+                <div class="form__field js-form-field">
+                    <label class="form__field-label js-form-label">Field 2</label>
+                    <div class="form__field-element-container">
+                        <input class="form__field-element js-form-input"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="form__btn">Submit</button>
+    </form>
+*/
+.form {
+  font-size: 1rem; }
+  .form__section-header {
+    width: 100%;
+    padding: 1em 0; }
+  .form__field {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 2em; }
+    .form__field--has-resizing-placeholder {
+      width: 80%;
+      padding: 0 1em;
+      border: solid 1px lightgray;
+      border-radius: 5px; }
+    .form__field-label {
+      font-size: 1em;
+      margin-bottom: 0.5em; }
+      .form__field--has-resizing-placeholder .form__field-label {
+        margin-bottom: 0;
+        cursor: text;
+        font-size: 1em;
+        z-index: 10;
+        transform: translateY(-50%) scale(1) perspective(0);
+        transform-origin: 0;
+        transition: top 0.5s, transform 0.5s; }
+        .form__field--has-resizing-placeholder .form__field-label.is-focus {
+          top: 5px;
+          transform: translateY(0) scale(0.7) perspective(1px); }
+        .form__field--has-inline-label .form__field--has-resizing-placeholder .form__field-label {
+          margin-bottom: 0;
+          padding-right: 1em; }
+        .form__field--has-no-label .form__field--has-resizing-placeholder .form__field-label {
+          display: none; }
+        .form__field--has-checkbox .form__field--has-resizing-placeholder .form__field-label, .form__field--has-radio-btn .form__field--has-resizing-placeholder .form__field-label {
+          order: 2;
+          margin-bottom: 0; }
+          .form__field--has-checkbox .form__field--has-resizing-placeholder .form__field-label:before, .form__field--has-radio-btn .form__field--has-resizing-placeholder .form__field-label:before {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            width: 1em;
+            margin-right: 0.2em;
+            font-size: 1.2em;
+            font-family: FontAwesome, sans-serif; }
+        .form__field--has-checkbox .form__field--has-resizing-placeholder .form__field-label:before {
+          content: "\f096"; }
+        .form__field--has-checkbox.is-checked .form__field--has-resizing-placeholder .form__field-label:before {
+          content: "\f046"; }
+        .form__field--has-radio-btn .form__field--has-resizing-placeholder .form__field-label:before {
+          content: "\f10c"; }
+        .form__field--has-radio-btn.is-checked .form__field--has-resizing-placeholder .form__field-label:before {
+          content: "\f05d"; }
+    .form__field-element-container {
+      position: relative;
+      width: 100%; }
+      .form__field--has-inline-label .form__field-element-container {
+        flex: 1; }
+      .form__field--has-checkbox .form__field-element-container, .form__field--has-radio-btn .form__field-element-container {
+        order: 1;
+        width: auto; }
+    .form__field-element {
+      width: 80%;
+      padding: 0.8em;
+      font-size: 1em;
+      border: solid 1px lightgray;
+      border-radius: 5px; }
+      .form__field--has-resizing-placeholder .form__field-element {
+        border: none;
+        padding: 0;
+        padding-top: calc(1em * 0.7 + 5px + 5px);
+        padding-bottom: 5px; }
+      .form__field--has-icon-right .form__field-element {
+        padding-right: calc(3em + 5px); }
+      .form__field--has-icon-left .form__field-element {
+        padding-left: calc(3em + 5px); }
+      .form__field--has-checkbox .form__field-element, .form__field--has-radio-btn .form__field-element {
+        display: none; }
+      .form__field-element-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 3em;
+        background-color: lightblue;
+        color: white;
+        text-align: center; }
+        .form__field--has-icon-left .form__field-element-icon {
+          left: 0;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px; }
+        .form__field--has-icon-right .form__field-element-icon {
+          right: 0;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px; }
+  .form__btn {
+    padding: 1em; }
+  .form__well {
+    padding: 1em;
+    background-color: lightblue; }
+
+.header {
+  font-size: 1rem; }
+
+/*
+
+    <div class="modal" data-dimmer="true" id="modal">
+        <div class="modal__close-btn js-close-modal-btn">
+			<i class="fa fa-close"></i>
+		</div>
+		<div class="modal__header">Modal header</div>
+		<div class="modal__content">
+			<h3>Modal content</h3>
+			<p>Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper.
+				Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod.
+				Cras mattis consectetur purus sit amet fermentum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean lacinia bibendum nulla sed consectetur. Curabitur blandit tempus porttitor.
+			</p>
+		</div>
+		<div class="modal__footer">Modal footer</div>
+	</div>
+	<div class="dimmer js-dimmer"></div>
+	<button class="btn js-show-modal-btn" data-modal-id="modal">Open Modal</button>
+
+*/
+.modal {
+  position: fixed;
+  top: 5em;
+  left: 50%;
+  width: 35em;
+  background-color: white;
+  border-radius: 5px;
+  border: solid 1px #dedede;
+  font-size: 1rem;
+  z-index: 20;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(-50%) scale(0);
+  transition: visibility 0.5s, opacity 0.5s, transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s; }
+  .modal.is-visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    transition: visibility 0.5s, opacity 0.5s, transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.1s; }
+  @media screen and (max-width: 991px) {
+    .modal {
+      top: 2em;
+      width: calc(100% - 3em); } }
+  .modal__header {
+    padding: 1em;
+    border-bottom: solid 1px #dedede; }
+  .modal__content {
+    padding: 1em; }
+  .modal__footer {
+    padding: 1em;
+    border-top: solid 1px #dedede; }
+  .modal__close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transform: translate(50%, -50%); }
+
+/*
+
+    <div class="navbar js-navbar" data-slide-speed="500">
+			<div class="navbar__mobile-container grid grid--justify-space-between grid--align-center hidden-md-up">
+				<h3 class="navbar__mobile-container-header">Template</h3>
+				<div class="navbar__hamburger js-hamburger">
+					<div class="navbar__hamburger-line"></div>
+					<div class="navbar__hamburger-line"></div>
+					<div class="navbar__hamburger-line"></div>
+					<div class="navbar__hamburger-line"></div>
+				</div>
+			</div>
+			<div class="navbar__container grid grid--justify-space-between grid--align-center hidden-sm-down js-navbar-container">
+				<div class="navbar__section">
+					<ul class="navbar__list grid grid--justify-start">
+						<li class="navbar__item">
+							<a class="navbar__item-link" href="#">Link 1</a>
+						</li>
+					</ul>
+				</div>
+				<div class="navbar__section">
+					<ul class="navbar__list grid grid--justify-end">
+						<li class="navbar__item">
+							<a class="navbar__item-link" href="#">Link 4</a>
+						</li>
+						<li class="navbar__item">
+							<a class="navbar__item-link" href="#">Link 5</a>
+						</li>
+						<li class="navbar__item">
+							<a class="navbar__item-link" href="#">Link 6</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+*/
+.navbar {
+  font-size: 1rem; }
+  .navbar--position-fixed {
+    position: fixed;
+    width: 100%; }
+  @media screen and (max-width: 991px) {
+    .navbar__container {
+      flex-direction: column; } }
+  .navbar__mobile-container {
+    padding: 1em;
+    background-color: lightblue; }
+    .navbar__mobile-container-header {
+      font-size: 1.5em;
+      color: white; }
+  @media screen and (max-width: 991px) {
+    .navbar__list {
+      flex-direction: column; } }
+  .navbar__item-link {
+    display: block;
+    padding: 1em;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.5s; }
+    .navbar__item-link:hover {
+      background-color: #bfbfbf; }
+    @media screen and (max-width: 991px) {
+      .navbar__item-link {
+        text-align: left; } }
+  .navbar__hamburger {
+    position: relative;
+    width: 2em;
+    height: 2em;
+    cursor: pointer; }
+    .navbar__hamburger-line {
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 0.35em;
+      background: white;
+      border-radius: 9px;
+      opacity: 1;
+      transform: rotate(0deg);
+      transition: all 0.5s ease-in-out; }
+      .navbar__hamburger-line:nth-child(1) {
+        top: 0; }
+      .navbar__hamburger-line:nth-child(2), .navbar__hamburger-line:nth-child(3) {
+        top: 50%;
+        transform: translateY(-50%); }
+      .navbar__hamburger-line:nth-child(4) {
+        bottom: 0; }
+    .navbar__hamburger.is-opened .navbar__hamburger-line:nth-child(1) {
+      top: 50%;
+      left: 50%;
+      width: 0; }
+    .navbar__hamburger.is-opened .navbar__hamburger-line:nth-child(2) {
+      transform: rotate(45deg); }
+    .navbar__hamburger.is-opened .navbar__hamburger-line:nth-child(3) {
+      transform: rotate(-45deg); }
+    .navbar__hamburger.is-opened .navbar__hamburger-line:nth-child(4) {
+      bottom: 50%;
+      left: 50%;
+      width: 0; }
+
+.clearfix:after {
+  display: table;
+  content: "";
+  clear: both; }
+
+.hide {
+  display: none; }
+
+.hidden-xs-up {
+  display: none; }
+
+@media (max-width: 767px) {
+  .hidden-xs-down {
+    display: none; } }
+
+@media (min-width: 768px) {
+  .hidden-sm-up {
+    display: none; } }
+
+@media (max-width: 991px) {
+  .hidden-sm-down {
+    display: none; } }
+
+@media (min-width: 992px) {
+  .hidden-md-up {
+    display: none; } }
+
+@media (max-width: 1199px) {
+  .hidden-md-down {
+    display: none; } }
+
+@media (min-width: 1200px) {
+  .hidden-lg-up {
+    display: none; } }
+
+.hidden-lg-down {
+  display: none; }
+
+.text-center {
+  text-align: center !important; }
+
+.text-center {
+  text-align: center !important; }
+
+.text-left {
+  text-align: left !important; }
+
+.text-right {
+  text-align: right !important; }
+
+.text-justify {
+  text-align: justify !important; }
+
+.text-nowrap {
+  white-space: nowrap !important; }
+
+.text-lowercase {
+  text-transform: lowercase !important; }
+
+.text-uppercase {
+  text-transform: uppercase !important; }
+
+.text-capitalize {
+  text-transform: capitalize !important; }
+
+.font-weight-normal {
+  font-weight: normal; }
+
+.font-weight-bold {
+  font-weight: bold; }
+
+.font-italic {
+  font-style: italic; }
+
+/* No files to import found in 7-overrides//* */

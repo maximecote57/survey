@@ -1,0 +1,16 @@
+{
+	"static-strings" : {
+		"en" : {
+			"intro-title" : "Metal/rock concerts survey",
+			"intro-description-1" : "This small survey is for rock/metal shows. We would like to know what makes a show interesting to you.",
+			"intro-description-2" : "Answering the questions only takes a couple of minutes, and might help bookers produce better shows.",
+			"intro-start" : "Begin"
+		},
+		"fr" : {
+			"intro-title" : "Sondage sur les spectacles rock/metal",
+			"intro-description-1" : "Ce court questionnaire est à propos des shows rock/metal. Nous désirons connaitre les principales raisons pour lesquelles quelqu'un va se déplacer à un concert.",
+			"intro-description-2" : "Répondre aux questions ne vous prendra que quelques minutes, et pourra peut-être éventuellement aider les bookers à produire de meilleurs spectacles.",
+			"intro-start" : "Débuter"
+		}
+	}
+}

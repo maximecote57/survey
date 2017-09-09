@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
+
+	<!-- build:css -->
+	<link rel="stylesheet" href="css/app.css">
+	<!-- endbuild -->
+	<script
+			src="https://code.jquery.com/jquery-2.2.4.min.js"
+			integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+	<script src="js/pages/home.js" defer></script>
+
+</head>
+<body>
+
+	<main id="survey" v-if="dataIsLoaded" v-cloak>
+		<nav class="nav">
+			<div class="container">
+				<div class="nav__container">
+					<a href="javascript:void(0)" v-if="currentLang === 'en'" @click="setLang('fr')">Francais</a>
+					<a href="javascript:void(0)" v-if="currentLang === 'fr'" @click="setLang('en')">English</a>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="section">
+				<intro></intro>
+				<div id="intro">
+
+
+				</div>
+				<div id="questions-container"></div>
+			</div>
+		</div>
+	</main>
+
+
+
+
+
+</body>
+</html>
